@@ -26,6 +26,6 @@ export class AddEmployee {
 
     async saveEmployee() {
         await this.saveButton.click();
-        await this.page.waitForLoadState('domcontentloaded');
+        await this.page.waitForTimeout(7000);
     }
 }
