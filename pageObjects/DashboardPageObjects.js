@@ -1,0 +1,1 @@
+export const PIMMenu = { role: 'link', Name: 'PIM' };

@@ -1,18 +1,18 @@
 import { expect } from "@playwright/test";
-
+import { AddEmployeeMenu, FirstName, LastName, EmployeeID, SaveButton } from "../pageObjects/AddEmployeeObjects";
 export class AddEmployee {
     constructor(page) {
         this.page = page;
-        this.addEmployeeMenu = page.getByRole('link', { name: 'Add Employee' });
-        this.firstName = page.locator("input[name='firstName']");
-        this.lastName = page.locator("input[name='lastName']");
-        this.employeeID = page.locator("(//input[@class='oxd-input oxd-input--active'])[2]");
-        this.saveButton = page.getByRole('button', { name: 'Save' });
+        this.addEmployeeMenu = page.getByRole(AddEmployeeMenu.role, { name: AddEmployeeMenu.Name });
+        this.firstName = page.locator(FirstName);
+        this.lastName = page.locator(LastName);
+        this.employeeID = page.locator(EmployeeID);
+        this.saveButton = page.getByRole(SaveButton.role, { name: SaveButton.Name });
 
     }
 
     async openaddEmployee() {
-        await this.addEmployeeMenu.click();
+        await this.addEmployeeMenu.click({ waitUntil: 'domcontentloaded' });
     }
 
     async addEmployee(firstName, lastName) {
@@ -26,6 +26,6 @@ export class AddEmployee {
 
     async saveEmployee() {
         await this.saveButton.click();
-        await this.page.waitForTimeout(7000);
+        await this.page.waitForTimeout(4000);
     }
 }

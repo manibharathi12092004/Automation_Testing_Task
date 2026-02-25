@@ -10,6 +10,7 @@ test(
         const employeeAction = new EmployeeAction(page);
         const pimAction = new PIMAction(page);
 
+        await loginAction.openAndCapture();
         await loginAction.login();
         await pimAction.openPIMandValidate();
         await employeeAction.addEmployeeAndValidate();
